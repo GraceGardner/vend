@@ -18,4 +18,15 @@ class SlotTest < Minitest::Test
     assert_equal 5, slot.count
     assert_equal item, slot.item
   end
+
+  def test_it_can_be_restocked
+    item = Item.new('name', 'description', 1.0)
+    slot = Slot.new(item, 5)
+
+    assert_equal 5, slot.count
+
+    slot.restock(5)
+
+    assert_equal 10, slot.count
+  end
 end
